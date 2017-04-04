@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: blog-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.oschina.net/eggyer/{application}
+          username: 812022339@qq.com
+          password: xiaojie1996
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://renguijie:xiaojie1996@discover:8762/eureka
+  instance:
+    hostname: configer
+    appname: blog-config-server
+    instanceId: ${eureka.instance.hostname}:${spring.application.name}:${server.port}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    prefer-ip-address: true
+security:
+  basic:
+    enabled: true
+  user:
+    name: renguijie
+    password: xiaojie1996

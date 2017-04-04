@@ -1,0 +1,20 @@
+server:
+  port: 8762                    # 指定该Eureka实例的端口
+spring:
+  application:
+    name: blog-discover-eureka  #服务名
+security:
+  basic:
+    enabled: true
+  user:
+    name: renguijie
+    password: xiaojie1996
+eureka:
+  instance:
+    hostname: discover  # 指定该Eureka实例的主机名
+    appname: blog-discover-eureka  #服务名
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://renguijie:xiaojie1996@discover:8762/eureka

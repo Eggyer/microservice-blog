@@ -1,0 +1,23 @@
+server:
+  port: 80
+spring:
+  application:
+    name: blog-gateway-zuul
+eureka:
+  instance:
+    appname: blog-gateway-zuul
+    hostname: gateway   # 指定该Eureka实例的主机名
+    prefer-ip-address: true
+    instanceId: ${eureka.instance.hostname}:${spring.application.name}:${server.port}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+  client:
+    serviceUrl:
+      defaultZone: http://renguijie:xiaojie1996@discover:8762/eureka
+zuul:
+  prefix: /api
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
